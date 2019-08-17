@@ -1,24 +1,11 @@
-# README
+# Self-learned on how to dockerize your rails application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Features to work on:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ - [x] Add simple rails application.
+ - [x] Add nginx for web server.
+ - [x] Add puma for application server.
+ - [ ] Add Redis for memory datastructure store.
+ - [ ] Add Sidekiq / Resque for background processing for Ruby.
+ - [ ] Deploy in AWS / Digital Ocean.
+ - [ ] Test if the image works in windows machine.
