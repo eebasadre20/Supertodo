@@ -1,13 +1,21 @@
 version: '3'
 volumes:  
   postgres_data: {} 
+  redis:
 services:  
   app:    
     build:      
       context: .      
       dockerfile: ./docker/app/Dockerfile    
     depends_on:      
-      - db  
+      - db 
+  redis:
+    image: 'redis:4.0-alpine'
+    command: redis-server
+    volumes:
+      - 'redis:/data'
+    ports:
+      - "6379:6379"
   db:    
     image: postgres    
     volumes:      
@@ -17,6 +25,17 @@ services:
       context: .      
       dockerfile: ./docker/web/Dockerfile    
     depends_on:      
-      - app    
+      - app
+      - redis 
     ports:      
       - 80:80
+  sidekiq:
+    depends_on:
+      - 'db'
+      - 'redis'
+    build: .
+    command: sidekiq -C config/sidekiq.yml
+    volumes:
+      - '.:/app'
+    env_file:
+      - .env
