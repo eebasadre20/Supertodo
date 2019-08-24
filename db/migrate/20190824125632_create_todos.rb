@@ -1,10 +1,10 @@
 class CreateTodos < ActiveRecord::Migration[5.2]
   def change
-    create_table :todos do |t|
-      t.string :title
-      t.text :body
+    # create_table :todos do |t|
+    #   t.string :title
+    #   t.text :description
 
-      t.timestamps
-    end
+    #   t.timestamps
+    # end
   end
 end
